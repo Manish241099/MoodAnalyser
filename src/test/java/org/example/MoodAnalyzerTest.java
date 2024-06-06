@@ -20,4 +20,11 @@ class MoodAnalyzerTest {
         String mood = moodAnalyzer2.analyzeMood();
         Assertions.assertEquals(mood,"HAPPY");
     }
+
+    @Test
+    void analyzeInvalidMood() {
+        MoodAnalyzer moodAnalyzer2 = new MoodAnalyzer(null);
+        String mood = moodAnalyzer2.analyzeMood();
+        Assertions.assertEquals(mood,"HAPPY");
+    }
 }
