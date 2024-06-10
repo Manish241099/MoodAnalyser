@@ -2,7 +2,9 @@ package org.example;
 
 public class MoodAnalyzer {
 
-
+public enum Mood{
+    HAPPY,SAD,NULL;
+    }
 
     private String msg;
 
@@ -11,18 +13,19 @@ public class MoodAnalyzer {
     }
 
     public String validate()throws InvalidMoodAnalyser {
-        if (msg.contains("sad")) {
-//            return String.valueOf(Mood.SAD);
-            return "SAD";
+        if (msg == null) {
+            return String.valueOf(Mood.NULL);
+        }
+       else if (msg.contains("sad")) {
+            return String.valueOf(Mood.SAD);
+
 
         } else if (msg.contains("happy")) {
 
-            return "HAPPY";
-        } else if (msg == null) {
+            return String.valueOf(Mood.HAPPY);
+        }
+       else {
             throw new InvalidMoodAnalyser("Invalid ");
-
-        } else {
-            return msg;
         }
 
     }
