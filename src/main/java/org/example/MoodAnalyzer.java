@@ -1,29 +1,44 @@
 package org.example;
 
-enum Mood {
-    HAPPY, SAD;
-}
-
 public class MoodAnalyzer {
 
-    enum Mood {
-        HAPPY, SAD;
-    }
+
+
     private String msg;
 
     public MoodAnalyzer(String msg) {
         this.msg = msg;
     }
 
-    public String analyzeMood() throws InvalidMoodAnalyser {
-        try {
-            if (msg.contains("sad")) {
-                return String.valueOf(Mood.SAD);
-            } else {
-                return String.valueOf(Mood.HAPPY);
-            }
-        } catch (Exception e) {
+    public String validate()throws InvalidMoodAnalyser {
+        if (msg.contains("sad")) {
+//            return String.valueOf(Mood.SAD);
+            return "SAD";
+
+        } else if (msg.contains("happy")) {
+
+            return "HAPPY";
+        } else if (msg == null) {
             throw new InvalidMoodAnalyser("Invalid ");
+
+        } else {
+            return msg;
         }
+
+    }
+
+    public String analyzeMood() {
+        try {
+          return validate();
+
+        } catch (InvalidMoodAnalyser e) {
+            System.out.println("Exception " + e);
+            System.out.println("catch the exception");
+        }
+        return msg;
+
     }
 }
+
+
+
